@@ -20,7 +20,7 @@ interface HeaderProps {
 
 const viewTitles = {
   dashboard: "Dashboard",
-  calender: "Calender",
+  Calendar: "Calendar",
   schedules: "Schedules",
   meals: "Meal Plans",
   checkin: "Check In",
@@ -29,7 +29,7 @@ const viewTitles = {
 
 const viewEmojis = {
   dashboard: "🏠",
-  calender: "👥",
+  Calendar: "👥",
   schedules: "📅",
   meals: "🍽️",
   checkin: "✅",

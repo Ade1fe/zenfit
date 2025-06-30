@@ -14,7 +14,7 @@
 
 // const menuItems = [
 //   { icon: LayoutDashboard, label: "Dashboard", active: true, color: "from-purple-500 to-blue-500" },
-//   { icon: Users, label: "Calender", color: "from-green-500 to-teal-500" },
+//   { icon: Users, label: "Calendar", color: "from-green-500 to-teal-500" },
 //   { icon: Calendar, label: "Schedules", color: "from-orange-500 to-red-500" },
 //   { icon: UtensilsCrossed, label: "Meals plans", color: "from-pink-500 to-rose-500" },
 //   { icon: TicketPlus, label: "Tips", color: "from-indigo-500 to-purple-500" },
@@ -398,9 +398,9 @@ const menuItems = [
     badge: null,
   },
   {
-    id: "calender",
+    id: "Calendar",
     icon: Users,
-    label: "calender",
+    label: "Calendar",
     active: false,
     color: "from-green-500 to-teal-500",
     badge: "12",

@@ -9,7 +9,7 @@ import CaloriesGraph from "./CaloriesGraph"
 import ReportSection from "./ReportSection"
 import MealsSection from "./MealsSection"
 import RecommendedFood from "./RecommendedFood"
-import CalenderScreen from "../pages/calendar/CalenderScreen"
+import CalendarScreen from "../pages/calendar/CalenderScreen"
 
 // Mock components for different sections
 
@@ -136,8 +136,8 @@ export default function Dashboard() {
 
   const renderCurrentView = () => {
     switch (currentView) {
-      case "calender":
-        return <CalenderScreen />
+      case "Calendar":
+        return <CalendarScreen />
       case "schedules":
         return <SchedulesView />
       case "meals":
@@ -182,7 +182,7 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-white">
       <Header
         onMobileMenuToggle={handleMobileMenuToggle}
         isMobileMenuOpen={isMobileMenuOpen}
