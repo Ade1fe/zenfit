@@ -1,6 +1,4 @@
 
-"use client"
-
 import { useState } from "react"
 import Header from "./Header"
 import Sidebar from "./Sidebar"
@@ -173,7 +171,7 @@ export default function Dashboard() {
             </div>
 
             <div className="mt-6 lg:mt-8 grid grid-cols-1 lg:grid-cols-1 xl:grid-cols-2 gap-4 lg:gap-6">
-              <MealsSection />
+                       <MealsSection />
               <RecommendedFood />
             </div>
           </>
