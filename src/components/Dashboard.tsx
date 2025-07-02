@@ -1,17 +1,14 @@
-
 import { useState } from "react"
-import Header from "./Header"
-import Sidebar from "./Sidebar"
-import TrackerCards from "./TrackerCards"
-import CaloriesGraph from "./CaloriesGraph"
-import ReportSection from "./ReportSection"
-import MealsSection from "./MealsSection"
-import RecommendedFood from "./RecommendedFood"
-import CalendarScreen from "../pages/calendar/CalenderScreen"
+import Header from "./Header" // Assuming Header component path
+import Sidebar from "./Sidebar" // Assuming Sidebar component path
+import TrackerCards from "./TrackerCards" // Assuming TrackerCards component path
+import CaloriesGraph from "./CaloriesGraph" // Assuming CaloriesGraph component path
+import ReportSection from "./ReportSection" // Assuming ReportSection component path
+import MealsSection from "./MealsSection" // Assuming MealsSection component path
+import RecommendedFood from "./RecommendedFood" // Assuming RecommendedFood component path
+import CalendarScreen from "../pages/calendar/CalenderScreen" // Correct path to CalendarScreen
 
-// Mock components for different sections
-
-
+// Mock components for different sections (as provided by you)
 const SchedulesView = () => (
   <div className="p-6 bg-white rounded-xl shadow-lg">
     <h2 className="text-2xl font-bold text-gray-800 mb-4">📅 Schedules</h2>
@@ -108,7 +105,7 @@ const MessagesView = () => (
 )
 
 export default function Dashboard() {
-  const [currentView, setCurrentView] = useState("dashboard")
+  const [currentView, setCurrentView] = useState("dashboard") // Initial view is 'dashboard'
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
@@ -134,7 +131,7 @@ export default function Dashboard() {
 
   const renderCurrentView = () => {
     switch (currentView) {
-      case "Calendar":
+      case "Calendar": // This case will render the CalendarScreen
         return <CalendarScreen />
       case "schedules":
         return <SchedulesView />
@@ -144,7 +141,8 @@ export default function Dashboard() {
         return <CheckInView />
       case "messages":
         return <MessagesView />
-      default:
+      case "dashboard": // Explicitly handle 'dashboard' view
+      default: // Fallback to dashboard content if currentView is not recognized
         return (
           <>
             <div className="mb-6 lg:mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
@@ -171,7 +169,7 @@ export default function Dashboard() {
             </div>
 
             <div className="mt-6 lg:mt-8 grid grid-cols-1 lg:grid-cols-1 xl:grid-cols-2 gap-4 lg:gap-6">
-                       <MealsSection />
+              {/* <MealsSection /> */}
               <RecommendedFood />
             </div>
           </>
