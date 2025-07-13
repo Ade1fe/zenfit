@@ -1,4 +1,4 @@
-// // "use client"
+// // 
 
 // // import { useState } from "react"
 // // import { ChefHat, Save, Plus, Trash2 } from "lucide-react"
@@ -313,7 +313,7 @@
 // // }
 
 // // export default EnhancedMealPlanner
-// "use client"
+// 
 
 // import { useState } from "react"
 // import { ChefHat, Save, Plus, Trash2, CalendarDays } from "lucide-react" // Added CalendarDays for header icon

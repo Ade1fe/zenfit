@@ -1012,7 +1012,8 @@ export default function Dashboard() {
   const renderCurrentView = () => {
     switch (currentView) {
       case "Calendar":
-        return <CalendarScreen  />
+        return <CalendarScreen onMealEventsChange={handleMealEventsChange} />
+          // return <CalendarScreen  />
       case "schedules":
         return <SchedulesView />
       case "meals":

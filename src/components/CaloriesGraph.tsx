@@ -142,7 +142,7 @@
 // //     </Card>
 // //   )
 // // }
-// "use client"
+// 
 
 // import { useSelector, useDispatch } from "react-redux"
 // import type { RootState } from "../store/store"
@@ -458,7 +458,7 @@
 //     </Card>
 //   )
 // }
-"use client"
+
 
 // import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
 // import { Button } from "./ui/button"
@@ -612,7 +612,7 @@
 //     </Card>
 //   )
 // }
-// "use client"
+// 
 // import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
 // import { Button } from "./ui/button"
 // import { MoreHorizontal, TrendingUp, Target } from "lucide-react"
@@ -1057,7 +1057,7 @@
 //     </div>
 //   )
 // }
-"use client"
+
 
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
 import { Button } from "./ui/button"
