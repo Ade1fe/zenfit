@@ -820,7 +820,7 @@ export default function Dashboard() {
   const renderCurrentView = () => {
     switch (currentView) {
       case "Calendar":
-        return <CalendarScreen  onMealEventsChange={handleMealEventsChange} />
+        return <CalendarScreen mealEvents={mealEvents} onMealEventsChange={handleMealEventsChange} />
       case "schedules":
         return <SchedulesView />
       case "meals":
@@ -851,7 +851,7 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 p-4">
+    <div className="min-h-screen bg-white ">
       <Header
         onMobileMenuToggle={handleMobileMenuToggle}
         isMobileMenuOpen={isMobileMenuOpen}
