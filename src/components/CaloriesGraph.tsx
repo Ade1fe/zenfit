@@ -299,9 +299,9 @@ export default function CaloriesGraph({ mealEvents = [] }: CaloriesGraphProps) {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6  lg:flex w-full gap-4 justify-between items-center gap-4">
       {/* Main Calorie Tracking Card */}
-      <Card className="bg-gradient-to-br from-white to-blue-50 border-blue-100 shadow-xl">
+      <Card className="bg-gradient-to-br from-white to-blue-50 border-blue-100 shadow-xl lg:w-1/2">
         <CardHeader className="bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-t-lg p-4 sm:p-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
@@ -349,7 +349,7 @@ export default function CaloriesGraph({ mealEvents = [] }: CaloriesGraphProps) {
       </Card>
 
       {/* Macronutrients Card */}
-      <Card className="bg-gradient-to-br from-white to-green-50 border-green-100 shadow-xl">
+      <Card className="bg-gradient-to-br from-white to-green-50 border-green-100 shadow-xl lg:w-1/2">
         <CardHeader className="bg-gradient-to-r from-green-500 to-teal-500 text-white rounded-t-lg p-4 sm:p-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">

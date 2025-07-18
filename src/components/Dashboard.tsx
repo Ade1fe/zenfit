@@ -838,14 +838,19 @@ export default function Dashboard() {
               <p className="text-gray-600">Track your daily nutrition and meal planning</p>
             </div>
             <TrackerCards />
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <div className="lg:col-span-1">
+            {/* grid grid-cols-1 lg:grid-cols-2 gap-6 
+            lg:col-span-1
+            lg:col-span-1
+            lg:col-span-1
+            */}
+            <div className="">
+              <div className="">
                 <CaloriesGraph mealEvents={mealEvents} />
               </div>
-               <div className="lg:col-span-1">
+               <div className="">
                 <RecommendedFood  />
               </div>
-              <div className="lg:col-span-1">
+              <div className="">
                 <MealsSection mealEvents={mealEvents} />
               </div>
             </div>
