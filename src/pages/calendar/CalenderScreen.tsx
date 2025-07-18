@@ -1,5 +1,4 @@
 "use client"
-
 import type React from "react"
 import { useState, useEffect, type JSX } from "react"
 import {
@@ -1123,6 +1122,7 @@ const CalendarApp = ({
     "December",
   ]
   const weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+
   const mealTypeConfig = {
     breakfast: {
       icon: "🌅",
@@ -1161,6 +1161,7 @@ const CalendarApp = ({
       gradient: "white",
     },
   }
+
   const eventTypeConfig: Record<EventType, { icon: JSX.Element; color: string; name: string }> = {
     workout: {
       icon: <Dumbbell className="w-4 h-4" />,
@@ -1269,7 +1270,7 @@ const CalendarApp = ({
         setRegularEvents((prev) => [...prev, event])
       }
       setNewEvent({ id: "", title: "", type: "workout", time: "", date: selectedDate, description: "", duration: "" }) // Reset form
-      setCurrentView("meal-planner") // Go back to meal planner after adding/updating
+      setCurrentView("dashboard") // Go back to dashboard after adding/updating
     }
   }
 
@@ -1307,7 +1308,7 @@ const CalendarApp = ({
     if (onMealEventsChange) {
       onMealEventsChange(updatedMeals) // Propagate change to parent
     }
-    setCurrentView("meal-planner") // Go back to meal planner after adding food
+    setCurrentView("dashboard") // Go back to dashboard after adding food
   }
 
   const removeFoodFromMeal = (mealId: string, foodId: number) => {
@@ -1330,7 +1331,6 @@ const CalendarApp = ({
         return meal
       })
       .filter(Boolean) as MealEvent[] // Filter out nulls (removed meals)
-
     setLocalMealEvents(updatedMeals)
     if (onMealEventsChange) {
       onMealEventsChange(updatedMeals) // Propagate change to parent
@@ -1340,8 +1340,8 @@ const CalendarApp = ({
   const deleteEvent = (eventId: string) => {
     let updatedMeals: MealEvent[] = localMealEvents
     let updatedRegularEvents: RegularEvent[] = regularEvents
-
     const isMealEvent = localMealEvents.some((meal) => meal.id === eventId)
+
     if (isMealEvent) {
       updatedMeals = localMealEvents.filter((meal) => meal.id !== eventId)
       setLocalMealEvents(updatedMeals)
@@ -1388,6 +1388,7 @@ const CalendarApp = ({
     }),
     { calories: 0, protein: 0, carbs: 0, fat: 0 },
   )
+
   const dailyGoals = { calories: 2000, protein: 150, carbs: 250, fat: 65 } // Example daily goals
   const progress = {
     calories: Math.min((selectedDateTotals.calories / dailyGoals.calories) * 100, 100),
@@ -1766,72 +1767,69 @@ const CalendarApp = ({
             </Card>
           </div>
           {/* Weekly Overview */}
-    <Card className="p-4 sm:p-6 shadow-md border border-gray-100 rounded-2xl">
-  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-4 mb-6">
-    <h2 className="text-lg sm:text-xl font-bold text-gray-800 flex items-center gap-2">
-      <TrendingUp className="w-5 h-5 text-emerald-600" />
-      This Week's Overview
-    </h2>
-    <Button
-      onClick={() => setCurrentView("calendar")}
-      variant="outline"
-      size="sm"
-      className="text-sm border-gray-300 hover:bg-emerald-50 hover:border-emerald-500"
-    >
-      View Full Calendar
-      <ChevronRight className="w-4 h-4 ml-1" />
-    </Button>
-  </div>
-
-  {/* Scrollable horizontal timeline */}
-  <div className="flex gap-3 overflow-x-auto pb-2 px-1 snap-x snap-mandatory -mx-1 sm:grid sm:grid-cols-7 sm:gap-2 sm:overflow-visible custom-scrollbar">
-    {Array.from({ length: 7 }, (_, i) => {
-      const date = new Date()
-      date.setDate(date.getDate() - date.getDay() + i)
-      const dateString = date.toISOString().split("T")[0]
-      const dayEvents = events.filter((event) => event.date === dateString)
-      const dayMeals = dayEvents.filter((event): event is MealEvent => event.type === "meal")
-      const dayCalories = dayMeals.reduce((sum, meal) => sum + meal.totalCalories, 0)
-      const isToday = dateString === todayString
-
-      return (
-        <div
-          key={i}
-          className={`snap-start min-w-[90px] sm:min-w-0 bg-white p-3 rounded-xl border transition-all duration-200 text-center cursor-pointer group flex-shrink-0
+          <Card className="p-4 sm:p-6 shadow-md border border-gray-100 rounded-2xl">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-4 mb-6">
+              <h2 className="text-lg sm:text-xl font-bold text-gray-800 flex items-center gap-2">
+                <TrendingUp className="w-5 h-5 text-emerald-600" />
+                This Week's Overview
+              </h2>
+              <Button
+                onClick={() => setCurrentView("calendar")}
+                variant="outline"
+                size="sm"
+                className="text-sm border-gray-300 hover:bg-emerald-50 hover:border-emerald-500"
+              >
+                View Full Calendar
+                <ChevronRight className="w-4 h-4 ml-1" />
+              </Button>
+            </div>
+            {/* Scrollable horizontal timeline */}
+            <div className="flex gap-3 overflow-x-auto pb-2 px-1 snap-x snap-mandatory -mx-1 sm:grid sm:grid-cols-7 sm:gap-2 sm:overflow-visible custom-scrollbar">
+              {Array.from({ length: 7 }, (_, i) => {
+                const date = new Date()
+                date.setDate(date.getDate() - date.getDay() + i)
+                const dateString = date.toISOString().split("T")[0]
+                const dayEvents = events.filter((event) => event.date === dateString)
+                const dayMeals = dayEvents.filter((event): event is MealEvent => event.type === "meal")
+                const dayCalories = dayMeals.reduce((sum, meal) => sum + meal.totalCalories, 0)
+                const isToday = dateString === todayString
+                return (
+                  <div
+                    key={i}
+                    className={`snap-start min-w-[90px] sm:min-w-0 bg-white p-3 rounded-xl border transition-all duration-200 text-center cursor-pointer group flex-shrink-0
             ${isToday ? "border-emerald-500 bg-emerald-50 shadow-md" : ""}
             ${!isToday && dayEvents.length > 0 ? "border-gray-200 bg-gray-50" : ""}
             ${!isToday && dayEvents.length === 0 ? "border-gray-100 hover:bg-gray-50" : ""}
           `}
-          onClick={() => {
-            setSelectedDate(dateString)
-            setCurrentView("meal-planner")
-          }}
-        >
-          <div className="text-xs font-semibold text-gray-500 group-hover:text-emerald-600">
-            {date.toLocaleDateString("en-US", { weekday: "short" })}
-          </div>
-          <div className={`text-lg font-bold mb-1 ${isToday ? "text-emerald-600" : "text-gray-800"}`}>
-            {date.getDate()}
-          </div>
-          {dayCalories > 0 && (
-            <Badge
-              variant="success"
-              className="text-xs font-medium bg-emerald-100 text-emerald-700 group-hover:scale-105 transition-transform"
-            >
-              {dayCalories} cal
-            </Badge>
-          )}
-          {dayEvents.filter((e) => e.type !== "meal").length > 0 && (
-            <div className="flex justify-center mt-1">
-              <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
+                    onClick={() => {
+                      setSelectedDate(dateString)
+                      setCurrentView("meal-planner")
+                    }}
+                  >
+                    <div className="text-xs font-semibold text-gray-500 group-hover:text-emerald-600">
+                      {date.toLocaleDateString("en-US", { weekday: "short" })}
+                    </div>
+                    <div className={`text-lg font-bold mb-1 ${isToday ? "text-emerald-600" : "text-gray-800"}`}>
+                      {date.getDate()}
+                    </div>
+                    {dayCalories > 0 && (
+                      <Badge
+                        variant="success"
+                        className="text-xs font-medium bg-emerald-100 text-emerald-700 group-hover:scale-105 transition-transform"
+                      >
+                        {dayCalories} cal
+                      </Badge>
+                    )}
+                    {dayEvents.filter((e) => e.type !== "meal").length > 0 && (
+                      <div className="flex justify-center mt-1">
+                        <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
+                      </div>
+                    )}
+                  </div>
+                )
+              })}
             </div>
-          )}
-        </div>
-      )
-    })}
-  </div>
-</Card>
-
+          </Card>
         </main>
       )}
       {/* Calendar View */}
@@ -1893,11 +1891,7 @@ const CalendarApp = ({
               {calendarDays.map((day, index) => (
                 <div
                   key={`${day.dateString}-${index}`}
-                  className={`    p-4 gap-2 cursor-pointer hover:bg-gray-50 transition-colors rounded-md border
-    ${!day.isCurrentMonth ? "bg-gray-50/50 text-gray-400" : ""}
-    ${day.isToday ? "bg-emerald-50 border-emerald-200" : ""}
-    ${selectedDate === day.dateString ? "ring-2 ring-emerald-500 ring-inset shadow-md" : ""}
-    sm:min-h-[120px] sm:p-2
+                  className={`    p-4 gap-2 cursor-pointer hover:bg-gray-50 transition-colors rounded-md border    ${!day.isCurrentMonth ? "bg-gray-50/50 text-gray-400" : ""}    ${day.isToday ? "bg-emerald-50 border-emerald-200" : ""}    ${selectedDate === day.dateString ? "ring-2 ring-emerald-500 ring-inset shadow-md" : ""}    sm:min-h-[120px] sm:p-2
     ${(index + 1) % 7 !== 0 ? "sm:border-r" : ""}  `}
                   onClick={() => {
                     setSelectedDate(day.dateString)
@@ -2482,7 +2476,6 @@ const CalendarApp = ({
                       placeholder="e.g., Gym Workout, Dentist Appointment"
                     />
                   </div>
-
                   {/* Event Type */}
                   <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
                     <label htmlFor="event-type" className="block text-sm font-medium text-gray-700 mb-2">
@@ -2504,7 +2497,6 @@ const CalendarApp = ({
                       <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" />
                     </div>
                   </div>
-
                   {/* Date and Time */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
@@ -2532,7 +2524,6 @@ const CalendarApp = ({
                       />
                     </div>
                   </div>
-
                   {/* Duration */}
                   <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
                     <label htmlFor="event-duration" className="block text-sm font-medium text-gray-700 mb-2">
@@ -2547,7 +2538,6 @@ const CalendarApp = ({
                       placeholder="e.g., 1 hour, 30 min, 20 mins laps"
                     />
                   </div>
-
                   {/* Description */}
                   <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
                     <label htmlFor="event-description" className="block text-sm font-medium text-gray-700 mb-2">
@@ -2562,44 +2552,40 @@ const CalendarApp = ({
                       placeholder="Any notes for this event..."
                     ></textarea>
                   </div>
-
                   <Button onClick={handleAddOrUpdateRegularEvent} variant="primary" className="w-full py-3 text-base">
                     {editingRegularEvent ? "Save Changes" : "Add Event"}
                   </Button>
                 </div>
               </Card>
             </div>
-
-         
             {/* Right side: Image/Content (hidden on small screens) */}
-<div className="hidden lg:flex lg:col-span-1 items-center justify-center p-4 shadow rounded-md">
-  <div className="bg-white rounded-2xl p-6 w-full ">
-    <img
-      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkvjU4YPjwggKZFQ6oO9jhPWruiY8SiVmOjw&s"
-      alt="Event planning illustration"
-      className="rounded-xl w-full h-auto object-cover mb-5"
-    />
-    <h3 className="text-2xl font-semibold text-gray-900 mb-3">Stay Organized, Effortlessly</h3>
-    <p className="text-gray-600 text-sm mb-6">
-      From workouts to appointments, manage everything in one place with a sleek and intuitive interface.
-    </p>
-    <ul className="space-y-3">
-      <li className="flex items-start gap-3">
-        <CalendarDays className="w-5 h-5 text-emerald-500 mt-1" />
-        <span className="text-sm text-gray-800">Plan your schedule with ease.</span>
-      </li>
-      <li className="flex items-start gap-3">
-        <Dumbbell className="w-5 h-5 text-emerald-500 mt-1" />
-        <span className="text-sm text-gray-800">Track your fitness journey effortlessly.</span>
-      </li>
-      <li className="flex items-start gap-3">
-        <BellRing className="w-5 h-5 text-emerald-500 mt-1" />
-        <span className="text-sm text-gray-800">Never miss a reminder or important moment.</span>
-      </li>
-    </ul>
-  </div>
-</div>
-
+            <div className="hidden lg:flex lg:col-span-1 items-center justify-center p-4 shadow rounded-md">
+              <div className="bg-white rounded-2xl p-6 w-full ">
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkvjU4YPjwggKZFQ6oO9jhPWruiY8SiVmOjw&s"
+                  alt="Event planning illustration"
+                  className="rounded-xl w-full h-auto object-cover mb-5"
+                />
+                <h3 className="text-2xl font-semibold text-gray-900 mb-3">Stay Organized, Effortlessly</h3>
+                <p className="text-gray-600 text-sm mb-6">
+                  From workouts to appointments, manage everything in one place with a sleek and intuitive interface.
+                </p>
+                <ul className="space-y-3">
+                  <li className="flex items-start gap-3">
+                    <CalendarDays className="w-5 h-5 text-emerald-500 mt-1" />
+                    <span className="text-sm text-gray-800">Plan your schedule with ease.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Dumbbell className="w-5 h-5 text-emerald-500 mt-1" />
+                    <span className="text-sm text-gray-800">Track your fitness journey effortlessly.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <BellRing className="w-5 h-5 text-emerald-500 mt-1" />
+                    <span className="text-sm text-gray-800">Never miss a reminder or important moment.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </main>
       )}
