@@ -557,6 +557,7 @@ import TrackerCards from "./TrackerCards"
 import CaloriesGraph from "./CaloriesGraph"
 import MealsSection from "./MealsSection"
 import CalendarScreen from "../pages/calendar/CalenderScreen"
+import RecommendedFood from "./RecommendedFood"
 
 // Meal plan data interface
 interface MealEvent {
@@ -840,6 +841,9 @@ export default function Dashboard() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <div className="lg:col-span-1">
                 <CaloriesGraph mealEvents={mealEvents} />
+              </div>
+               <div className="lg:col-span-1">
+                <RecommendedFood  />
               </div>
               <div className="lg:col-span-1">
                 <MealsSection mealEvents={mealEvents} />
