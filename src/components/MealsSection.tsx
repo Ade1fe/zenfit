@@ -486,7 +486,7 @@ export default function MealsSection({ mealEvents = [] }: MealsSectionProps) {
 
   return (
     <Card className="bg-white border border-gray-200 shadow">
-      <CardHeader className="bg-black text-white rounded-t-lg p-4 sm:p-6">
+      <CardHeader className="bg-[#00AEEF] text-white rounded-t-lg p-4 sm:p-6">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <span className="text-xl sm:text-2xl">🍽️</span>
@@ -564,7 +564,7 @@ export default function MealsSection({ mealEvents = [] }: MealsSectionProps) {
             </div>
             <h3 className="text-lg font-semibold text-gray-800 mb-2">No meals planned today</h3>
             <p className="text-gray-600 text-sm mb-4">Start planning your meals to see them here</p>
-            <Button className="bg-black text-white hover:bg-gray-900">Plan Your Meals</Button>
+            <Button className="bg-[#00AEEF] text-white hover:bg-gray-900">Plan Your Meals</Button>
           </div>
         )}
       </CardContent>

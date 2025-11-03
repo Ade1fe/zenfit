@@ -1105,7 +1105,7 @@ export default function CaloriesGraph({ mealEvents = [] }: CaloriesGraphProps) {
   return (
     <div className="space-y-6 lg:flex w-full gap-4 justify-between items-center">
       <Card className="bg-gray-50 border-black shadow-xl lg:w-1/2">
-        <CardHeader className="bg-black text-white rounded-t-lg p-4 sm:p-6">
+        <CardHeader className="bg-[#00AEEF] text-white rounded-t-lg p-4 sm:p-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
               <TrendingUp className="h-5 w-5" />
@@ -1144,7 +1144,7 @@ export default function CaloriesGraph({ mealEvents = [] }: CaloriesGraphProps) {
       </Card>
 
       <Card className="bg-gray-50 border-grey-100 shadow-xl lg:w-1/2">
-        <CardHeader className="bg-black text-white rounded-t-lg p-4 sm:p-6">
+        <CardHeader className="bg-[#00AEEF] text-white rounded-t-lg p-4 sm:p-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
               <Target className="h-5 w-5" />
@@ -1177,7 +1177,7 @@ export default function CaloriesGraph({ mealEvents = [] }: CaloriesGraphProps) {
                     </div>
                     <div className="w-full bg-gray-300 rounded-full h-2">
                       <div
-                        className="bg-black h-2 rounded-full transition-all duration-500"
+                        className="bg-[#00AEEF] h-2 rounded-full transition-all duration-500"
                         style={{ width: `${percent}%` }}
                       />
                     </div>

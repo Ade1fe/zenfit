@@ -4029,45 +4029,65 @@ const CalendarApp = ({
     fat: Math.min((todayTotals.fat / dailyGoals.fat) * 100, 100),
   }
 
-  // Navigation buttons for switching between views
-  const NavigationButtons = () => (
-    <div className="flex flex-wrap gap-2 mb-6 py-4 bg-white sticky top-0 z-20 ">
-      {" "}
-      {/* Added shadow-sm */}
-      <Button
-        onClick={() => setCurrentView("dashboard")}
-        variant={currentView === "dashboard" ? "primary" : "outline"}
-        size="sm"
-      >
-        <Home className="w-4 h-4 mr-2" />
-        Dashboard
-      </Button>
-      <Button
-        onClick={() => setCurrentView("calendar")}
-        variant={currentView === "calendar" ? "primary" : "outline"}
-        size="sm"
-      >
-        <Calendar className="w-4 h-4 mr-2" />
-        Calendar
-      </Button>
-      <Button
-        onClick={() => setCurrentView("meal-planner")}
-        variant={currentView === "meal-planner" ? "primary" : "outline"}
-        size="sm"
-      >
-        <ChefHat className="w-4 h-4 mr-2" />
-        Meal Planner
-      </Button>
-      <Button
-        onClick={() => setCurrentView("food-search")}
-        variant={currentView === "food-search" ? "primary" : "outline"}
-        size="sm"
-      >
-        <Search className="w-4 h-4 mr-2" />
-        Food Search
-      </Button>
-    </div>
-  )
+ // Navigation buttons for switching between views
+// Navigation buttons for switching between views
+const NavigationButtons = () => (
+  <div className="flex flex-wrap gap-2 mb-6 py-4 bg-white sticky top-0 z-20">
+    <Button
+      onClick={() => setCurrentView("dashboard")}
+      size="sm"
+      className={`flex items-center ${
+        currentView === "dashboard"
+          ? "bg-sky-500 text-white hover:bg-sky-600"
+          : "bg-white  border border-sky-500 text-sky-600 hover:bg-sky-50"
+      }`}
+    >
+      <Home className="w-4 h-4 mr-2" />
+      Dashboard
+    </Button>
+
+    <Button
+      onClick={() => setCurrentView("calendar")}
+      size="sm"
+      className={`flex items-center ${
+        currentView === "calendar"
+          ? "bg-sky-500 text-white hover:bg-sky-600"
+          : "bg-white   border border-sky-500 text-sky-600 hover:bg-sky-50"
+      }`}
+    >
+      <Calendar className="w-4 h-4 mr-2" />
+      Calendar
+    </Button>
+
+    <Button
+      onClick={() => setCurrentView("meal-planner")}
+      size="sm"
+      className={`flex items-center ${
+        currentView === "meal-planner"
+          ? "bg-sky-500 text-white hover:bg-sky-600"
+          : "bg-white  border border-sky-500 text-sky-600 hover:bg-sky-50"
+      }`}
+    >
+      <ChefHat className="w-4 h-4 mr-2" />
+      Meal Planner
+    </Button>
+
+    <Button
+      onClick={() => setCurrentView("food-search")}
+      size="sm"
+      className={`flex items-center ${
+        currentView === "food-search"
+          ? "bg-sky-500 text-white hover:bg-sky-600"
+          : "bg-white  border border-sky-500 text-sky-600 hover:bg-sky-50"
+      }`}
+    >
+      <Search className="w-4 h-4 mr-2" />
+      Food Search
+    </Button>
+  </div>
+);
+
+
 
   return (
     <div className="min-h-screen bg-white">
@@ -4692,16 +4712,17 @@ const CalendarApp = ({
                     >
                       Plan Meals
                     </Button>
-                    <Button
-                      onClick={() => {
-                        setNewEvent((prev) => ({ ...prev, date: selectedDate }))
-                        setEditingRegularEvent(null) // Ensure adding new
-                        setCurrentView("add-event")
-                      }}
-                      variant="outline"
-                    >
-                      Add Event
-                    </Button>
+<Button
+  onClick={() => {
+    setNewEvent((prev) => ({ ...prev, date: selectedDate }));
+    setEditingRegularEvent(null);
+    setCurrentView("add-event");
+  }}
+  className="border border-[#00AEEF] text-[#00AEEF] hover:bg-[#E0F7FF] transition-all duration-200"
+>
+  Add Event
+</Button>
+
                   </div>
                 </div>
               )}

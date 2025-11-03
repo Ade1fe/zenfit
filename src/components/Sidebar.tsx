@@ -458,14 +458,28 @@ export default function Sidebar({ onNavigate, onCollapseChange, isMobileMenuOpen
         <div className="p-4 xl:p-6">
           {/* Logo Section */}
           {!isCollapsed && (
-            <div className="mb-6 flex items-center space-x-3">
-              <div className="h-10 w-10 rounded-xl bg-black flex items-center justify-center shadow-lg">
-                <span className="text-white text-lg">🍽️</span>
-              </div>
-              <span className="text-xl font-bold bg-black bg-clip-text text-transparent">
-                Daily Meal
-              </span>
-            </div>
+            // <div className="mb-6 flex items-center space-x-3">
+            //   <div className="h-10 w-10 rounded-xl bg-black flex items-center justify-center shadow-lg">
+            //     <span className="text-white text-lg">🍽️</span>
+            //   </div>
+            //   <span className="text-xl font-bold bg-black bg-clip-text text-transparent">
+            //     Daily Meal
+            //   </span>
+            // </div>
+            <div className="p-4">
+  <div className="mb-6 flex items-center space-x-3">
+    {/* Logo Icon */}
+    <div className="h-10 w-10 rounded-xl bg-[#00AEEF] flex items-center justify-center shadow-lg">
+      <span className="text-white text-lg">🍽️</span>
+    </div>
+
+    {/* Logo Text */}
+    <span className="text-xl font-bold bg-black bg-clip-text text-transparent">
+      Daily Meal
+    </span>
+  </div>
+</div>
+
           )}
           {isCollapsed && (
             <div className="mb-6 flex justify-center">
@@ -474,46 +488,57 @@ export default function Sidebar({ onNavigate, onCollapseChange, isMobileMenuOpen
               </div>
             </div>
           )}
-          <nav className="space-y-2 xl:space-y-3">
-            {menuItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => handleItemClick(item.id)}
-                className={`w-full flex items-center ${
-                  isCollapsed ? "justify-center px-2" : "space-x-3 xl:space-x-4 px-3 xl:px-4"
-                } py-2 xl:py-3 rounded-xl text-sm font-medium transition-all duration-200 relative group ${
-                  activeItem === item.id
-                    ? `bg-black  text-white shadow-lg transform scale-105`
-                    : "text-gray-600 hover:bg-gradient-to-r hover:from-gray-50 hover:to-blue-50 hover:text-gray-800 hover:scale-105"
-                }`}
-              >
-                <item.icon className="h-4 w-4 xl:h-5 xl:w-5 flex-shrink-0" />
-                {!isCollapsed && (
-                  <>
-                    <span className="text-xs xl:text-sm truncate">{item.label}</span>
-                    {item.badge && (
-                      <span
-                        className={`ml-auto px-2 py-1 text-xs rounded-full ${
-                          activeItem === item.id ? "bg-white/20 text-white" : "bg-gray-100 text-gray-600"
-                        }`}
-                      >
-                        {item.badge}
-                      </span>
-                    )}
-                  </>
-                )}
-                {/* Tooltip for collapsed state */}
-                {isCollapsed && (
-                  <div className="absolute left-full ml-2 px-2 py-1 bg-gray-800 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-50">
-                    {item.label}
-                    {item.badge && (
-                      <span className="ml-2 px-1 py-0.5 bg-gray-500 rounded-full text-xs">{item.badge}</span>
-                    )}
-                  </div>
-                )}
-              </button>
-            ))}
-          </nav>
+<nav className="space-y-2 xl:space-y-3">
+  {menuItems.map((item) => (
+    <button
+      key={item.id}
+      onClick={() => handleItemClick(item.id)}
+      className={`w-full flex items-center ${
+        isCollapsed ? "justify-center px-2" : "space-x-3 xl:space-x-4 px-3 xl:px-4"
+      } py-2 xl:py-3 rounded-xl text-sm font-medium transition-all duration-200 relative group ${
+        activeItem === item.id
+          ? "bg-[#00AEEF] text-white shadow-lg transform scale-105"
+          : "text-gray-700 hover:bg-[#FFF4E8] hover:text-[#00AEEF] hover:scale-105"
+      }`}
+    >
+      <item.icon
+        className={`h-4 w-4 xl:h-5 xl:w-5 flex-shrink-0 ${
+          activeItem === item.id ? "text-white" : "text-[#00AEEF] group-hover:text-[#00AEEF]"
+        }`}
+      />
+
+      {!isCollapsed && (
+        <>
+          <span className="text-xs xl:text-sm truncate">{item.label}</span>
+          {item.badge && (
+            <span
+              className={`ml-auto px-2 py-1 text-xs rounded-full font-semibold ${
+                activeItem === item.id
+                  ? "bg-white/20 text-white"
+                  : "bg-[#FFF4E8] text-[#00AEEF]"
+              }`}
+            >
+              {item.badge}
+            </span>
+          )}
+        </>
+      )}
+
+      {/* Tooltip for collapsed state */}
+      {isCollapsed && (
+        <div className="absolute left-full ml-2 px-2 py-1 bg-gray-800 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-50">
+          {item.label}
+          {item.badge && (
+            <span className="ml-2 px-1 py-0.5 bg-[#00AEEF] text-white rounded-full text-xs">
+              {item.badge}
+            </span>
+          )}
+        </div>
+      )}
+    </button>
+  ))}
+</nav>
+
           {!isCollapsed && (
             <div className="mt-6 xl:mt-8 pt-6 xl:pt-8 border-t border-gray-100">
               <div className="flex items-center space-x-3 xl:space-x-4 mb-4 xl:mb-6 p-2 xl:p-3 bg-gradient-to-r from-gray-50 to-blue-50 rounded-xl cursor-pointer hover:from-gray-100 hover:to-blue-100 transition-all">
@@ -580,8 +605,8 @@ export default function Sidebar({ onNavigate, onCollapseChange, isMobileMenuOpen
               onClick={() => handleItemClick(item.id)}
               className={`flex flex-col items-center space-y-1 px-2 py-2 rounded-lg transition-all duration-200 relative ${
                 activeItem === item.id
-                  ? `bg-black  text-white shadow-lg`
-                  : "text-gray-600 hover:text-gray-800"
+    ? "bg-[#00AEEF] text-white shadow-lg transform scale-105"
+      : "text-gray-600 hover:bg-[#FFF4E8] hover:text-[#00AEEF] hover:scale-105"
               }`}
             >
               <item.icon className="h-4 w-4" />
@@ -606,37 +631,52 @@ export default function Sidebar({ onNavigate, onCollapseChange, isMobileMenuOpen
         }`}
       >
         <div className="p-4">
-          <div className="mb-6 flex items-center space-x-3">
-            <div className="h-10 w-10 rounded-xl bg-gradient-to-r from-orange-400 to-pink-500 flex items-center justify-center shadow-lg">
-              <span className="text-white text-lg">🍽️</span>
-            </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-gray-600 to-blue-600 bg-clip-text text-transparent">
-              Daily Meal
-            </span>
-          </div>
+      <div className="p-4">
+  <div className="mb-6 flex items-center space-x-3">
+    {/* Logo Icon */}
+    <div className="h-10 w-10 rounded-xl bg-[#00AEEF] flex items-center justify-center shadow-lg">
+      <span className="text-white text-lg">🍽️</span>
+    </div>
+
+    {/* Logo Text */}
+ <span className="text-xl font-bold bg-black bg-clip-text text-transparent">
+      Daily Meal
+    </span>
+  </div>
+</div>
+
           <nav className="space-y-2">
             {menuItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => handleItemClick(item.id)}
-                className={`w-full flex items-center space-x-3 px-3 py-2 rounded-xl text-sm font-medium transition-all duration-200 relative ${
-                  activeItem === item.id
-                    ? `bg-black text-white shadow-lg`
-                    : "text-gray-600 hover:bg-gradient-to-r hover:from-gray-50 hover:to-blue-50 hover:text-gray-800"
-                }`}
-              >
-                <item.icon className="h-4 w-4 flex-shrink-0" />
-                <span>{item.label}</span>
-                {item.badge && (
-                  <span
-                    className={`ml-auto px-2 py-1 text-xs rounded-full ${
-                      activeItem === item.id ? "bg-white/20 text-white" : "bg-gray-100 text-gray-600"
-                    }`}
-                  >
-                    {item.badge}
-                  </span>
-                )}
-              </button>
+<button
+  key={item.id}
+  onClick={() => handleItemClick(item.id)}
+  className={`w-full flex items-center ${
+    isCollapsed ? "justify-center px-2" : "space-x-3 xl:space-x-4 px-3 xl:px-4"
+  } py-2 xl:py-3 rounded-xl text-sm font-medium transition-all duration-200 relative group ${
+    activeItem === item.id
+    ? "bg-[#00AEEF] text-white shadow-lg transform scale-105"
+      : "text-gray-600 hover:bg-[#FFF4E8] hover:text-[#00AEEF] hover:scale-105"
+  }`}
+>
+  <item.icon className="h-4 w-4 xl:h-5 xl:w-5 flex-shrink-0" />
+  {!isCollapsed && (
+    <>
+      <span className="text-xs xl:text-sm truncate">{item.label}</span>
+      {item.badge && (
+        <span
+          className={`ml-auto px-2 py-1 text-xs rounded-full ${
+            activeItem === item.id
+              ? "bg-white/20 text-white"
+              : "bg-[#FFF4E8] text-[#00AEEF]"
+          }`}
+        >
+          {item.badge}
+        </span>
+      )}
+    </>
+  )}
+</button>
+
             ))}
           </nav>
           <div className="mt-6 pt-6 border-t border-gray-100">

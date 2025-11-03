@@ -142,7 +142,7 @@ export default function TrackerCards() {
         >
           <CardContent className="p-4 sm:p-5 lg:p-6">
             <div className="flex items-center justify-between mb-3 sm:mb-4">
-              <div className="p-2 sm:p-3 rounded-xl bg-black text-white shadow">
+              <div className="p-2 sm:p-3 rounded-xl bg-[#00AEEF] text-white shadow">
                 <tracker.icon className="h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6" />
               </div>
               <span className="text-lg sm:text-xl lg:text-2xl">{tracker.emoji}</span>
@@ -156,7 +156,7 @@ export default function TrackerCards() {
             </div>
             <div className="mt-2 sm:mt-3 h-1.5 sm:h-2 bg-gray-200 rounded-full overflow-hidden">
               <div
-                className="h-full bg-black  rounded-full transition-all duration-500"
+                className="h-full bg-gray-500  rounded-full transition-all duration-500"
                 style={{ width: "75%" }}
               ></div>
             </div>

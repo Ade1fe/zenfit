@@ -93,7 +93,7 @@ export default function RecommendedFood() {
 
   return (
     <Card className="bg-white border border-gray-100 shadow-md rounded-xl">
-      <CardHeader className="bg-black text-white rounded-t-lg p-4 sm:p-5">
+      <CardHeader className="bg-[#00AEEF] text-white rounded-t-lg p-4 sm:p-5">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <span className="text-xl sm:text-2xl">🍴</span>
@@ -140,7 +140,7 @@ export default function RecommendedFood() {
                   {food.fats}
                 </span>
               </div>
-              <Button className="bg-black hover:bg-gray-800 text-white rounded-md">
+              <Button className="bg-[#00AEEF] hover:bg-gray-800 text-white rounded-md">
                 <Plus className="h-4 w-4" />
               </Button>
             </div>
